@@ -121,5 +121,9 @@ if __name__ == '__main__':
     update_thread.daemon = True
     update_thread.start()
     
+    # Garantir que o folder static existe
+    if not os.path.exists(app.config['STATIC_FOLDER']):
+        os.makedirs(app.config['STATIC_FOLDER'])
+
     # Iniciar o aplicativo Flask em modo de depuração
     app.run(debug=True)
