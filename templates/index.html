@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Visualization Server</title>
+    <meta http-equiv="refresh" content="5"> 
+</head>
+<body>
+    <h1>Data Visualization Server</h1>
+    <ul>
+        <li><a href="/plot/humidity">Plot Topic Humidity</a></li>
+        <li><a href="/plot/temperature">Plot Topic Temperature</a></li>
+        <li><a href="/plot/vibration">Plot Topic Vibration</a></li>
+        <li><a href="/plot/luminosity">Plot Topic Luminosity</a></li>
+    </ul>
+    <h2>Plots</h2>
+    <img src="{{ url_for('static', filename='plot_humidity.png') }}" alt="Humidity Plot">
+    <img src="{{ url_for('static', filename='plot_temperature.png') }}" alt="Temperature Plot">
+    <img src="{{ url_for('static', filename='plot_vibration.png') }}" alt="Vibration Plot">
+    <img src="{{ url_for('static', filename='plot_luminosity.png') }}" alt="Luminosity Plot">
+</body>
+</html>
