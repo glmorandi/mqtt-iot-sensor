@@ -64,30 +64,30 @@ def get_all_data():
 # Função para gerar o gráfico
 def generate_plot(data, topic, smoothing=5):
     plt.figure(figsize=(10, 6))  # Ajuste o tamanho da figura
-    
-    # Estilo da linha e marcadores com a mesma cor
-    
+
     # Se a suavização estiver ativada
     if smoothing > 0:
         smooth_data = np.convolve(data, np.ones(smoothing)/smoothing, mode='same')  # Suavização
-        plt.plot(smooth_data, color='b', linewidth=2, marker='o', markersize=6)
-        real = plt.plot(list(data), linestyle='--', alpha=0.5, linewidth=2)
+        plt.plot(smooth_data, color='b', linewidth=2, marker='o', markersize=6, label='Smooth value')
+        plt.plot(data, linestyle='--', alpha=0.5, linewidth=2, label='Real value')
     else:
-        line = plt.plot(list(data), color='b', linewidth=2, marker='o', markersize=6)
+        plt.plot(data, color='b', linewidth=2, marker='o', markersize=6, label='Real value')
 
     plt.xlabel('Tempo', fontsize=12)
     plt.ylabel('Valor', fontsize=12)
     plt.title(f'Gráfico para {topic}', fontsize=14)
-    
-    plt.grid(True, linestyle='--', alpha=0.6, which='both', axis='both', color='gray')  # Personalize a grade
-    
+
+    plt.grid(True, linestyle='--', alpha=0.6, which='both', axis='both', color='gray')
+
     plt.xticks(fontsize=10)  # Tamanho da fonte dos rótulos do eixo x
     plt.yticks(fontsize=10)  # Tamanho da fonte dos rótulos do eixo y
 
+    plt.legend(fontsize=12)  # Adicione a legenda ao gráfico
+
     buffer = BytesIO()
-    plt.savefig(buffer, format='png', bbox_inches='tight', dpi=300)  # Ajuste as margens e a resolução
+    plt.savefig(buffer, format='png', bbox_inches='tight', dpi=300)
     buffer.seek(0)
-    
+
     return buffer
 
 
